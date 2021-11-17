@@ -19,13 +19,13 @@
 			}
 		},
     {
-			"path": "pages/follows/follows",
+			"path": "pages/personal/follows/follows",
 			"style": {
 				"navigationBarTitleText": "关注"
 			}
 		},
     {
-			"path": "pages/record/record",
+			"path": "pages/personal/record/record",
 			"style": {
 				"navigationBarTitleText": "最近播放"
 			}

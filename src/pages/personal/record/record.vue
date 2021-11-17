@@ -13,8 +13,8 @@
   </view>
 </template>
 <script>
-import userService from '../../api/userService'
-import user from '../../static/js/user';
+import userService from '../../../api/userService'
+import user from '../../../static/js/user';
 export default {
   data () {
     return {

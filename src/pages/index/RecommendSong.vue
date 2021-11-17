@@ -29,13 +29,13 @@ export default {
     }
   },
   onShow () {
-    this.getRecommendSongs();
     this.userImformation = user.getUserImformation();
+    this.getRecommendSongs();
   },
   methods: {
-
     getRecommendSongs () {
-      service.getRecommendSongs().then(res => {
+      service.getRecommendSongs({ cookie: encodeURIComponent(this.userImformation.cookie) }).then(res => {
+        console.log(res);
         if (res.code === 200) {
           console.log("每日推荐");
           this.dailySongs = res.data.dailySongs;

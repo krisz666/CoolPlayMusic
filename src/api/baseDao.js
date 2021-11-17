@@ -33,4 +33,23 @@ function gete(path){ //get
     });
    })
 }
-export default { get, gete}
+
+function post(path, data){ //get
+  return new Promise((resolved, rejected) => {
+    uni.request({
+      url: baseUrl + path,
+      data: data,
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      success: (res) => {
+        resolved(res.data);
+      },
+      fail: (err) => {
+        rejected(err);
+      }
+    });
+   })
+}
+export default { get, gete, post }

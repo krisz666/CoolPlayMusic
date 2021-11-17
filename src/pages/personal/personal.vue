@@ -65,6 +65,7 @@ export default {
   },
   onShow () {
     this.userImformation = user.getUserImformation();
+    // this.userImformation = this.globalData.userImformation;
   },
   methods: {
     layout () {
@@ -82,12 +83,12 @@ export default {
     },
     toUserFollows () {
       uni.navigateTo({
-        url: '../follows/follows',
+        url: 'follows/follows',
       });
     },
     toUserRecord () {
       uni.navigateTo({
-        url: '../record/record',
+        url: 'record/record',
       });
     }
   },

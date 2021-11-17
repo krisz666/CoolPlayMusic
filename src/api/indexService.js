@@ -9,7 +9,7 @@ export default {
     return dao.get('/personalized', data);
   },
   //获取每日推荐歌曲
-  getRecommendSongs() {
-    return dao.gete('/recommend/songs');
+  getRecommendSongs(data) {
+    return dao.get('/recommend/songs', data);
   }
 }

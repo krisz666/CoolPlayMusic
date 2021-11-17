@@ -5,10 +5,10 @@ export default {
   //   userImformation: {}
   // },
   onLaunch: function () {
-    // this.userImformation = user.getUserImformation();
+
   },
   onShow: function () {
-
+    // this.userImformation = user.getUserImformation();
   },
   onHide: function () {
 

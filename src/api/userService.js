@@ -10,6 +10,6 @@ export default {
   },
   // 获取用户最近播放
   getUserRecord (data) {  
-    return dao.gete('/user/record', data);
+    return dao.get('/user/record', data);
   }
 }

@@ -35,13 +35,7 @@ export default {
       }
       loginservice.userLogin(data).then((res) => {
         if (res.code === 200) {
-          uni.setStorage({
-            key: 'user-imformation',
-            data: res,
-            success: function () {
-              console.log('success');
-            }
-          });
+          uni.setStorageSync('user-imformation', res);
           uni.navigateBack({
             delta: 2
           });
