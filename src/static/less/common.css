@@ -1,0 +1,21 @@
+page {
+  background: #eee;
+}
+uni-scroll-view .uni-scroll-view::-webkit-scrollbar {
+  /* 隐藏滚动条，仍然可以滚动 */
+  display: none;
+}
+.ellipsis {
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.background-style {
+  background: #fff;
+  border-radius: 14rpx;
+  padding: 14rpx;
+  margin-bottom: 20rpx;
+}

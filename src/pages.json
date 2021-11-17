@@ -3,14 +3,69 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "coolplay"
+			}
+		},
+    {
+			"path": "pages/personal/personal",
+			"style": {
+				"navigationBarTitleText": "个人中心"
+			}
+		},
+    {
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "登录"
+			}
+		},
+    {
+			"path": "pages/follows/follows",
+			"style": {
+				"navigationBarTitleText": "关注"
+			}
+		},
+    {
+			"path": "pages/record/record",
+			"style": {
+				"navigationBarTitleText": "最近播放"
+			}
+		},
+    {
+			"path": "pages/index/RecommendSong",
+			"style": {
+				"navigationBarTitleText": "每日推荐"
 			}
 		}
 	],
 	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "coolplay",
+		"navigationBarBackgroundColor": "#87ceeb",
 		"backgroundColor": "#F8F8F8"
-	}
+	},
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [{
+        "pagePath": "pages/index/index",
+        "iconPath": "static/image/index.png",
+        "selectedIconPath": "static/image/index_active.png",
+        "text": "主页"
+    }, {
+        "pagePath": "pages/personal/personal",
+        "iconPath": "static/image/personal.png",
+        "selectedIconPath": "static/image/personal_active.png",
+        "text": "我的"
+    }]
+  },
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "^uni-(.*)": "@/components/uni-$1.vue", // 匹配components目录内的vue文件
+      "^vue-file-(.*)": "packageName/path/to/vue-file-$1.vue", // 匹配node_modules内的vue文件
+      "NavHeader": "@/components/NavHeader/NavHeader.vue"
+    }
+  }
 }
