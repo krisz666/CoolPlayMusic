@@ -49,6 +49,12 @@
       "style": {
         "navigationBarTitleText": "收藏"
       }
+    },
+    {
+      "path": "pages/personal/like/Like",
+      "style": {
+        "navigationBarTitleText": "喜欢"
+      }
     }
 
 	],
@@ -80,7 +86,8 @@
     "custom": {
       "^uni-(.*)": "@/components/uni-$1.vue", // 匹配components目录内的vue文件
       "^vue-file-(.*)": "packageName/path/to/vue-file-$1.vue", // 匹配node_modules内的vue文件
-      "NavHeader": "@/components/NavHeader/NavHeader.vue"
+      "NavHeader": "@/components/navheader/NavHeader.vue",
+      "List": "@/components/list/List.vue"
     }
   }
 }

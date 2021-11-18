@@ -43,7 +43,7 @@
         @tap="toUserFollows"
       >
         <view class="iconfont icon-wodehaoyou"></view>
-        <view class="application-item-name">我的好友</view>
+        <view class="application-item-name">我的关注</view>
       </view>
       <view
         class="application-item"
@@ -52,14 +52,12 @@
         <view class="iconfont icon-zuijinbofang1"></view>
         <view class="application-item-name">最近播放</view>
       </view>
-      <view
-        class="application-item"
-        @tap="toCollection"
-      >
-        <view class="iconfont icon-shoucang"></view>
-        <view class="application-item-name">我的收藏</view>
-      </view>
     </view>
+    <!-- 喜欢 -->
+    <view
+      class="background-style like"
+      @tap='toMyLike'
+    >我的喜欢</view>
   </view>
 </template>
 <script> 
@@ -73,7 +71,7 @@ export default {
       userImformation: {},
     }
   },
-  onLoad () {
+  onShow () {
     this.userImformation = user.getUserImformation();
   },
   methods: {
@@ -106,12 +104,23 @@ export default {
         url: 'collection/Collection',
       });
     },
+    toMyLike () {
+      uni.navigateTo({
+        url: 'like/Like',
+      });
+    }
   },
 }
 </script>
 <style lang="less" scoped>
 .user {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   .user-info {
+    width: 100%;
     margin-top: 60rpx;
     .login {
       position: relative;
@@ -162,10 +171,8 @@ export default {
       }
     }
   }
-  .layout {
-    text-align: center;
-  }
   .user-application {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     .application-item {
@@ -173,7 +180,7 @@ export default {
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 40rpx;
+      padding: 42rpx;
       .iconfont {
         font-size: 50rpx;
         color: #87ceeb;
@@ -183,6 +190,8 @@ export default {
         font-size: 20rpx;
       }
     }
+  }
+  .like {
   }
 }
 </style>

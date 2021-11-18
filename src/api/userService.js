@@ -11,5 +11,9 @@ export default {
   // 获取用户最近播放
   getUserRecord (data) {  
     return dao.get('/user/record', data);
+  },
+  //获取用户喜欢歌曲列表
+  getUserLikes (data) {
+    return dao.get('/likelist', data);
   }
 }
