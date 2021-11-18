@@ -1,13 +1,16 @@
 <template>
-  <view class="record">
+  <view class="list">
     <view
-      class="record-item"
+      class="item"
       v-for="item in recordList"
       :key="item.song.id"
     >
-      <view class="song-name">{{item.song.name}}</view>
+      <image :src="item.song.al.picUrl" />
+      <view class="desc">
+        <view class="item-name">{{item.song.name}}</view>
 
-      <view class="song-desc">{{item.song.ar[0].name + "-" + item.song.al.name}}</view>
+        <view class="item-info">{{item.song.ar[0].name + "-" + item.song.al.name}}</view>
+      </view>
 
     </view>
   </view>
@@ -22,7 +25,7 @@ export default {
       recordList: [],
     }
   },
-  onShow () {
+  onLoad () {
     this.userImformation = user.getUserImformation();
     this.getUserRecord();
   },
@@ -38,19 +41,4 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-.record {
-  background: #fff;
-  padding: 20rpx;
-  .record-item {
-    padding: 20rpx;
-    border-bottom: 1px solid #ccc;
-    .song-name {
-      margin-bottom: 10rpx;
-      font-size: 32rpx;
-    }
-    .song-desc {
-      font-size: 24rpx;
-    }
-  }
-}
 </style>

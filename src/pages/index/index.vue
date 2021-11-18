@@ -34,17 +34,21 @@
             </view>
           </view>
           <view class="navItem">
+            <view
+              class="navItemInner"
+              @tap='toPersonalFM'
+            >
+              <view class="iconfont icon-sirenFM1"></view>
+              <text>私人FM</text>
+            </view>
+          </view>
+          <view class="navItem">
             <view class="navItemInner">
               <view class="iconfont icon-paihangbang"></view>
               <text>排行榜</text>
             </view>
           </view>
-          <view class="navItem">
-            <view class="navItemInner">
-              <view class="iconfont icon-sirenFM1"></view>
-              <text>私人FM</text>
-            </view>
-          </view>
+
           <view class="navItem">
             <view class="navItemInner">
               <view class="iconfont icon-gedan1"></view>
@@ -57,12 +61,7 @@
               <text>游戏专区</text>
             </view>
           </view>
-          <view class="navItem">
-            <view class="navItemInner">
-              <view class="iconfont icon-meirituijian"></view>
-              <text>每日推荐</text>
-            </view>
-          </view>
+
         </scroll-view>
       </view>
     </view>
@@ -102,7 +101,6 @@
         class="recommend"
       >
         <view>
-
         </view>
       </scroll-view>
     </view>
@@ -122,7 +120,7 @@ export default {
       userImformation: {},
     }
   },
-  onShow () {
+  onLoad () {
     //this.getUserStatus();
     this.getBanner();
     this.getPersonalized();
@@ -149,7 +147,12 @@ export default {
     },
     toRecommendSongs () {
       uni.navigateTo({
-        url: 'RecommendSong',
+        url: 'recommendsong/RecommendSong',
+      });
+    },
+    toPersonalFM () {
+      uni.navigateTo({
+        url: 'personalFM/PersonalFM',
       });
     }
   }

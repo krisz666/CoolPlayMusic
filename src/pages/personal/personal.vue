@@ -29,9 +29,13 @@
           @tap="toLogin"
         >立即登录</view>
       </view>
+
     </view>
     <!-- 退出登陆 -->
-    <view @click="layout">退出登陆</view>
+    <view
+      @click="layout"
+      class="background-style layout"
+    >退出登陆</view>
     <!-- 音乐应用 -->
     <view class="user-application background-style">
       <view
@@ -48,12 +52,18 @@
         <view class="iconfont icon-zuijinbofang1"></view>
         <view class="application-item-name">最近播放</view>
       </view>
-
+      <view
+        class="application-item"
+        @tap="toCollection"
+      >
+        <view class="iconfont icon-shoucang"></view>
+        <view class="application-item-name">我的收藏</view>
+      </view>
     </view>
   </view>
 </template>
 <script> 
-import loginservice from '../../api/loginService'
+import loginService from '../../api/loginService'
 import userService from '../../api/userService'
 import user from '../../static/js/user';
 export default {
@@ -63,34 +73,39 @@ export default {
       userImformation: {},
     }
   },
-  onShow () {
+  onLoad () {
     this.userImformation = user.getUserImformation();
-    // this.userImformation = this.globalData.userImformation;
   },
   methods: {
     layout () {
-      loginservice.userLayout();
-      uni.clearStorage();
-      // this.reflash();
+      if (this.userImformation) {
+        loginService.userLayout();
+        uni.clearStorage();
+        uni.navigateBack({
+          delta: 0,
+        });
+      }
     },
-    // reflash () {
-    //   loginservice.userLoginRefresh();
-    // },
     toLogin () {
       uni.navigateTo({
-        url: '../login/login',
+        url: '../login/Login',
       });
     },
     toUserFollows () {
       uni.navigateTo({
-        url: 'follows/follows',
+        url: 'follows/Follows',
       });
     },
     toUserRecord () {
       uni.navigateTo({
-        url: 'record/record',
+        url: 'record/Record',
       });
-    }
+    },
+    toCollection () {
+      uni.navigateTo({
+        url: 'collection/Collection',
+      });
+    },
   },
 }
 </script>
@@ -146,6 +161,9 @@ export default {
         border: none;
       }
     }
+  }
+  .layout {
+    text-align: center;
   }
   .user-application {
     display: flex;

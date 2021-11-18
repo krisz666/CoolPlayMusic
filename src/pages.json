@@ -1,41 +1,56 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		{
-			"path": "pages/index/index",
+		//首页
+    {
+			"path": "pages/index/Index",
 			"style": {
 				"navigationBarTitleText": "coolplay"
 			}
 		},
     {
-			"path": "pages/personal/personal",
+			"path": "pages/index/recommendsong/RecommendSong",
+			"style": {
+				"navigationBarTitleText": "每日推荐"
+			}
+		},
+    {
+      "path": "pages/index/personalFM/PersonalFM",
+			"style": {
+				"navigationBarTitleText": "私人FM"
+			}
+    },
+    //个人中心
+    {
+			"path": "pages/personal/Personal",
 			"style": {
 				"navigationBarTitleText": "个人中心"
 			}
 		},
     {
-			"path": "pages/login/login",
+			"path": "pages/login/Login",
 			"style": {
 				"navigationBarTitleText": "登录"
 			}
 		},
     {
-			"path": "pages/personal/follows/follows",
+			"path": "pages/personal/follows/Follows",
 			"style": {
 				"navigationBarTitleText": "关注"
 			}
 		},
     {
-			"path": "pages/personal/record/record",
+			"path": "pages/personal/record/Record",
 			"style": {
 				"navigationBarTitleText": "最近播放"
 			}
 		},
     {
-			"path": "pages/index/RecommendSong",
-			"style": {
-				"navigationBarTitleText": "每日推荐"
-			}
-		}
+      "path": "pages/personal/collection/Collection",
+      "style": {
+        "navigationBarTitleText": "收藏"
+      }
+    }
+
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
@@ -49,12 +64,12 @@
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
     "list": [{
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/index/Index",
         "iconPath": "static/image/index.png",
         "selectedIconPath": "static/image/index_active.png",
         "text": "主页"
     }, {
-        "pagePath": "pages/personal/personal",
+        "pagePath": "pages/personal/Personal",
         "iconPath": "static/image/personal.png",
         "selectedIconPath": "static/image/personal_active.png",
         "text": "我的"

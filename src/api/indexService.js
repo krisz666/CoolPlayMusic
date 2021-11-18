@@ -11,5 +11,9 @@ export default {
   //获取每日推荐歌曲
   getRecommendSongs(data) {
     return dao.get('/recommend/songs', data);
+  },
+  //获取私人FM
+  getPersonalFM (data) {
+    return dao.get('/personal_fm', data);
   }
 }

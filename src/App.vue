@@ -1,14 +1,12 @@
 <script>
-// import user from './static/js/user';
+
 export default {
-  // globalData: {
-  //   userImformation: {}
-  // },
+
   onLaunch: function () {
 
   },
   onShow: function () {
-    // this.userImformation = user.getUserImformation();
+
   },
   onHide: function () {
 
@@ -21,4 +19,5 @@ export default {
 @import url("./static/less/common");
 /* 图标 */
 @import url("./static/less/iconfont");
+@import url("./static/less/list");
 </style>

@@ -11,5 +11,9 @@ export default {
   // 刷新登陆状态
   userLoginRefresh () {
     return dao.gete('/login/refresh');
+  },
+  //验证用户手机是否注册
+  verifyUserPhone (data) {
+    return dao.get('/cellphone/existence/check', data);
   }
 }
