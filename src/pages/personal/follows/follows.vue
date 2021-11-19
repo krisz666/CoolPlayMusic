@@ -21,20 +21,20 @@ import user from '../../../static/js/user';
 export default {
   data () {
     return {
-      userImformation: {},
+      user: {},
       followList: [],
     }
   },
   onLoad () {
-    this.userImformation = user.getUserImformation();
+    this.user = user.getUserImformation();
     this.getUserFollows();
   },
   methods: {
     getUserFollows () {
-      if (!this.userImformation) {
+      if (!this.user) {
 
       } else {
-        userService.getUserFollows({ uid: this.userImformation.profile.userId }).then(res => {
+        userService.getUserFollows({ uid: this.user.userId }).then(res => {
           if (res.code === 200) {
             this.followList = res.follow;
           }

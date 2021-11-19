@@ -10,16 +10,16 @@ export default {
   data () {
     return {
       dailySongs: [],
-      userImformation: {},
+      user: {},
     }
   },
   onLoad () {
-    this.userImformation = user.getUserImformation();
+    this.user = user.getUserImformation();
     this.getRecommendSongs();
   },
   methods: {
     getRecommendSongs () {
-      service.getRecommendSongs({ cookie: encodeURIComponent(this.userImformation.cookie) }).then(res => {
+      service.getRecommendSongs({ cookie: encodeURIComponent(this.user.cookie) }).then(res => {
         if (res.code === 200) {
           this.dailySongs = res.data.dailySongs;
         }

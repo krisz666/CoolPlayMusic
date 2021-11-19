@@ -3,7 +3,7 @@
     <view
       class="item"
       v-for="item in list"
-      :key="item.al.id"
+      :key="item.id"
     >
       <image :src="item.al.picUrl" />
       <view class="desc">

@@ -4,16 +4,16 @@
     <view class="user-info  background-style">
       <!-- 用户已登录 -->
       <view
-        v-if="userImformation"
+        v-if="userInfo"
         class="login"
       >
-        <image :src="userImformation.profile.avatarUrl">
-          <view class="nickname">{{userImformation.profile.nickname}}</view>
-          <view class="fans">
-            <view>{{userImformation.profile.follows + " 关注"}}</view>
-            <view>{{userImformation.profile.followeds + " 粉丝"}}</view>
-            <view>{{"Lv."+userImformation.profile.playlistCount}}</view>
-          </view>
+        <image :src="userInfo.avatarUrl" />
+        <view class="nickname">{{userInfo.nickname}}</view>
+        <view class="fans">
+          <view>{{userInfo.follows + " 关注"}}</view>
+          <view>{{userInfo.followeds + " 粉丝"}}</view>
+          <view>{{"Lv."+userInfo.playlistCount}}</view>
+        </view>
       </view>
       <!-- 用户未登录 -->
       <view
@@ -29,7 +29,6 @@
           @tap="toLogin"
         >立即登录</view>
       </view>
-
     </view>
     <!-- 退出登陆 -->
     <view
@@ -52,12 +51,20 @@
         <view class="iconfont icon-zuijinbofang1"></view>
         <view class="application-item-name">最近播放</view>
       </view>
+      <view
+        class="application-item"
+        @tap="toCollection"
+      >
+        <view class="iconfont icon-zuijinbofang1"></view>
+        <view class="application-item-name">我的测试</view>
+      </view>
     </view>
     <!-- 喜欢 -->
-    <view
-      class="background-style like"
-      @tap='toMyLike'
-    >我的喜欢</view>
+    <view class="like background-style">
+      <view class="iconfont icon-xihuan1"></view>
+      <view @tap='toMyLike'>我的喜欢</view>
+    </view>
+
   </view>
 </template>
 <script> 
@@ -68,15 +75,15 @@ export default {
   data () {
     return {
       login: false,
-      userImformation: {},
+      userInfo: {},
     }
   },
   onShow () {
-    this.userImformation = user.getUserImformation();
+    this.userInfo = user.getUserImformation();
   },
   methods: {
     layout () {
-      if (this.userImformation) {
+      if (this.userInfo) {
         loginService.userLayout();
         uni.clearStorage();
         uni.navigateBack({
@@ -192,6 +199,15 @@ export default {
     }
   }
   .like {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 20rpx;
+    .iconfont {
+      font-size: 40rpx;
+      color: #87ceeb;
+      margin-right: 10rpx;
+    }
   }
 }
 </style>

@@ -5,8 +5,8 @@ export default {
     return dao.get('/banner', data);
   },
   //获取个性歌单推荐
-  getPersonalized (data) {
-    return dao.get('/personalized', data);
+  getRecommendResource (data) {
+    return dao.get('/recommend/resource', data);
   },
   //获取每日推荐歌曲
   getRecommendSongs(data) {

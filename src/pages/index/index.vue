@@ -71,39 +71,10 @@
         newname="推荐歌单"
         newmore="更多>"
       ></NavHeader>
-      <scroll-view
-        scroll-x
-        enable-flex
-        class="recommend"
-      >
-        <view
-          v-for="item in recommendList"
-          :key="item.id"
-          class="recommendItem"
-        >
-          <view class="recommendItemInner">
-            <image :src="item.picUrl" />
-            <text class="ellipsis">{{item.name}}</text>
-          </view>
-
-        </view>
-      </scroll-view>
+      <MyScroll :newList="recommendList">
+      </MyScroll>
     </view>
     <!-- 推荐歌曲 -->
-    <view class="background-style">
-      <NavHeader
-        newname="治愈温暖你的时光"
-        newmore="播放"
-      ></NavHeader>
-      <scroll-view
-        scroll-x
-        enable-flex
-        class="recommend"
-      >
-        <view>
-        </view>
-      </scroll-view>
-    </view>
   </view>
 </template>
 
@@ -117,14 +88,13 @@ export default {
       bannerList: [],
       recommendList: [],
       recommendResourceList: [],
-      userImformation: {},
+      user: {},
     }
   },
-  onLoad () {
-    //this.getUserStatus();
+  onShow () {
     this.getBanner();
-    this.getPersonalized();
-    this.userImformation = user.getUserImformation();
+    this.user = user.getUserImformation();
+    this.getRecommendResource();
   },
   methods: {
     //获取用户登陆状态
@@ -136,13 +106,17 @@ export default {
     //获取轮播图
     getBanner () {
       service.getBanner({ type: 2 }).then(res => {
-        this.bannerList = res.banners;
+        if (res.code === 200) {
+          this.bannerList = res.banners;
+        }
       })
     },
-    //获取歌单
-    getPersonalized () {
-      service.getPersonalized({ limit: 10 }).then(res => {
-        this.recommendList = res.result;
+    //获取推荐歌单
+    getRecommendResource () {
+      service.getRecommendResource({ cookie: encodeURIComponent(this.user.cookie) }).then(res => {
+        if (res.code === 200) {
+          this.recommendList = res.recommend;
+        }
       })
     },
     toRecommendSongs () {
@@ -205,36 +179,6 @@ export default {
     }
   }
   .recommendSong {
-    .recommend {
-      display: flex;
-      white-space: nowrap;
-      justify-items: center;
-      align-items: center;
-      margin-top: 20rpx;
-      .recommendItem {
-        display: inline-block;
-        margin-right: 20rpx;
-        .recommendItemInner {
-          display: flex;
-          flex-direction: column;
-          justify-items: center;
-          align-items: center;
-          width: 200rpx;
-          image {
-            width: 100%;
-            height: 200rpx;
-            border-radius: 10rpx;
-          }
-          text {
-            margin-top: 10rpx;
-            font-size: 26rpx;
-          }
-        }
-        &:last-child {
-          margin-right: 0;
-        }
-      }
-    }
   }
 }
 </style>
