@@ -15,5 +15,9 @@ export default {
   //获取私人FM
   getPersonalFM (data) {
     return dao.get('/personal_fm', data);
+  },
+  //获取所有榜单
+  getTopList () {
+    return dao.gete('/toplist');
   }
 }

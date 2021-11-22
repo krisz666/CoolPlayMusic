@@ -85,7 +85,7 @@ export default {
     layout () {
       if (this.userInfo) {
         loginService.userLayout();
-        uni.clearStorage();
+        uni.removeStorage('user-imformation');
         uni.navigateBack({
           delta: 0,
         });

@@ -43,7 +43,10 @@
             </view>
           </view>
           <view class="navItem">
-            <view class="navItemInner">
+            <view
+              class="navItemInner"
+              @click="toTopList"
+            >
               <view class="iconfont icon-paihangbang"></view>
               <text>排行榜</text>
             </view>
@@ -97,12 +100,6 @@ export default {
     this.getRecommendResource();
   },
   methods: {
-    //获取用户登陆状态
-    getUserStatus () {
-      userService.getUserStatus().then(res => {
-        console.log(res);
-      })
-    },
     //获取轮播图
     getBanner () {
       service.getBanner({ type: 2 }).then(res => {
@@ -119,14 +116,22 @@ export default {
         }
       })
     },
+    //每日推荐
     toRecommendSongs () {
       uni.navigateTo({
         url: 'recommendsong/RecommendSong',
       });
     },
+    //私人FM
     toPersonalFM () {
       uni.navigateTo({
         url: 'personalFM/PersonalFM',
+      });
+    },
+    //排行榜
+    toTopList () {
+      uni.navigateTo({
+        url: 'toplist/TopList',
       });
     }
   }

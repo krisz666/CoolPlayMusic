@@ -19,6 +19,12 @@
 				"navigationBarTitleText": "私人FM"
 			}
     },
+    {
+      "path": "pages/index/toplist/TopList",
+      "style": {
+        "navigationBarTitleText": "排行榜"
+      }
+    },
     //个人中心
     {
 			"path": "pages/personal/Personal",
@@ -58,9 +64,16 @@
     },
     //歌单
     {
-      "path": "pages/playlist/playlist",
+      "path": "pages/playlist/PlayList",
       "style": {
         "navigationBarTitleText": "歌单"
+      }
+    },
+    //歌曲
+    {
+      "path": "pages/playsong/PlaySong",
+      "style": {
+        "navigationBarTitleText": "播放歌曲"
       }
     }
 	],

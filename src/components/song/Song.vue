@@ -1,67 +1,60 @@
 <template>
   <view
     class="song"
-    :onEnded='onEnded'
+    v-if="songUrl"
   >
     <image
       class="cover"
-      :src="songDetail.al.PicUrl"
+      :src="songDetail.al.picUrl"
       mode='widthFix'
     />
     <view>
-      {{"歌名："+songDetail.name}}
+      {{lyric}}
     </view>
-    <view>{{"歌手："+songDetail.ar.name}}</view>
+    <view>
+      {{"歌名："+ songDetail.name}}
+    </view>
+    <view>{{"歌手："+ songDetail.ar[0].name}}</view>
     <button @click="play">播放</button>
     <button @click="pause">暂停</button>
-    <button @click="nextsong">下一首</button>
+    <!-- <button @click="nextsong">下一首</button> -->
   </view>
 </template>
 <script>
-import func from 'vue-editor-bridge';
-import indexService from '../../../api/indexService'
-import songService from '../../../api/songService'
-import user from '../../../static/js/user';
+
+import { mapState } from 'vuex'
 let innerAudioContext = uni.createInnerAudioContext();
 export default {
-  props: ["newSongDeatil", "newSongUrl"],
-  data () {
-    return {
-      songDetail: [],
-      songUrl: [],
-    }
+  computed: {
+    ...mapState(['songDetail', 'songUrl', 'lyric']),
   },
-  watch: {
-    newSongDetail: function (newVal, oldVal) {
-      this.songDetail = newVal;
-    }
-    newSongUrl: function (newVal, oldVal) {
-      this.songUrl = newVal;
-    }
-  }
+  onBackPress () {
+    innerAudioContext.destroy();
+  },
+  onReady () {
+    this.dealWith(this.lyric);
+  },
   methods: {
-    onEnded () {
-      innerAudioContext.onEnded(function () {
-        this.currentIndex++;
-        if (this.currentIndex > this.personalFMList.length - 1) {
-          this.currentIndex = 0;
-        }
-      })
-    },
-    nextsong () {
-      this.currentIndex++;
-      if (this.currentIndex > this.personalFMList.length - 1) {
-        this.currentIndex = 0;
-      }
-      this.getSongUrl();
-    },
+    // onEnded () {
+    //   innerAudioContext.onEnded(function () {
+    //     this.currentIndex++;
+    //     if (this.currentIndex > this.personalFMList.length - 1) {
+    //       this.currentIndex = 0;
+    //     }
+    //   })
+    // },
+    // nextsong () {
+    //   this.currentIndex++;
+    //   if (this.currentIndex > this.personalFMList.length - 1) {
+    //     this.currentIndex = 0;
+    //   }
+    // },
     play () {
-      this.getSongUrl();
       let _this = this;
       innerAudioContext.src = this.songUrl.url;
       innerAudioContext.play();
       innerAudioContext.onPlay(function () {
-        if (_this.songUrl) {
+        if (_this.songUrl.url) {
           uni.showToast({
             title: '播放中',
             duration: 2000
@@ -84,14 +77,18 @@ export default {
       })
       this.playing = false;
     },
-    //获取音乐资源url
-    getSongUrl () {
-      songService.getSongUrl({ id: this.songDetail.id }).then(res => {
-        if (res.code === 200) {
-          this.songUrl = res.data[0].url;
-        }
-      })
+    dealWith (lyric) {
+      let arr = this.lyric.split("\n");
+      console.log(arr);
     }
+    //获取音乐资源url
+    // getSongUrl () {
+    //   songService.getSongUrl({ id: this.songDetail.id }).then(res => {
+    //     if (res.code === 200) {
+    //       this.songUrl = res.data[0].url;
+    //     }
+    //   })
+    // }
   },
 }
 </script>

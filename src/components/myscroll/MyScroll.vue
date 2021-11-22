@@ -25,19 +25,13 @@
 </template>
 <script>
 import songService from '../../api/songService'
+import { mapState } from 'vuex'
 export default {
   props: {
     newList: {
       type: Array,
       default: () => []
     },
-    // newId: {
-    //   type: Number,
-    // },
-    // tracks: {
-    //   type: Array,
-    //   default: () => []
-    // }
   },
   data () {
     return {
@@ -45,6 +39,9 @@ export default {
       songs: "",
       id: "",
     }
+  },
+  computed: {
+    ...mapState(['track'])
   },
   watch: {
     newList: function (newVal, oldVal) {
@@ -60,14 +57,16 @@ export default {
     toplaylist (item) {
       this.id = item.id;
       this.getPlayList();
+
       uni.navigateTo({
-        url: '/pages/playlist/playlist',
+        url: '/pages/playlist/PlayList',
       });
     },
     getPlayList () {
       songService.getPlayList({ id: this.id }).then(res => {
         if (res.code === 200) {
-          this.tracks = res.playlist.tracks;
+          this.$store.commit('changeTrack', res.playlist.tracks)
+          //this.$store.state.track = res.playlist.tracks;
         }
       })
 

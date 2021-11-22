@@ -1,25 +1,25 @@
 .list {
-	padding: 20rpx;
-	background: #fff;
+  padding: 20rpx;
+  background: #fff;
 }
 .list .item {
-	display: flex;
-	margin-bottom: 16rpx;
+  display: flex;
+  margin-bottom: 16rpx;
 }
 .list .item image {
-	width: 100rpx;
-	height: 100rpx;
-	border-radius: 10rpx;
-	margin-right: 20rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 10rpx;
+  margin-right: 20rpx;
 }
 .list .item .desc {
-	width: calc(100% - 100rpx);
-	border-bottom: 1px solid #ccc;
+  width: calc(100% - 120rpx);
+  border-bottom: 1px solid #ccc;
 }
 .list .item .desc .item-name {
-	font-size: 32rpx;
-	margin-bottom: 10rpx;
+  font-size: 32rpx;
+  margin-bottom: 10rpx;
 }
 .list .item .desc .item-info {
-	font-size: 24rpx;
+  font-size: 24rpx;
 }

@@ -61,6 +61,7 @@
   </view>
 </template>
 <script>
+
 export default {
   data () {
     return {
@@ -80,19 +81,20 @@ export default {
     }
   },
   onLoad () {
+    let bgAudioMannager = uni.createInnerAudioContext();
     var that = this
     var http = "http://localhost:3000"
     // 请求歌词
     uni.request({
       url: http + '/lyric',
-      method: "GET",
       data: {
         id: "33894312"
       },
-      success: (tik) => {
-        var left = tik.data.lrc.lyric.split("\n");
+      success: (res) => {
+        var left = res.lrc.lyric.split("\n");
         // console.log(left)
-        that.lyric = tik.data.lrc.lyric;
+        that.lyric = res.lrc.lyric;
+        console.log(that.lyric);
         // 声明一个空数组
         var arr = []
         left.forEach((val, i) => {
@@ -109,19 +111,18 @@ export default {
         // console.log(that.arr);
         that.maxTime = arr[arr.length - 2].time;
         // 请求歌曲链接
-        wx.request({
+        uni.request({
           url: http + '/song/url',
-          method: "GET",
           data: {
             id: "33894312"
           },
           success: (res) => {
-            console.log(res.data.data[0].url)
+            console.log(res.data[0].url)
             var that = this;
-            const bgAudioMannager = uni.getBackgroundAudioManager();
+
             bgAudioMannager.title = "lll";
             bgAudioMannager.singer = "lll";
-            bgAudioMannager.src = res.data.data[0].url;
+            bgAudioMannager.src = res.data[0].url;
             // 当前进度除以总时长
             bgAudioMannager.onTimeUpdate(function () {
               // console.log(bgAudioMannager.duration, "总时间")
@@ -148,7 +149,9 @@ export default {
         })
 
       }
-    })
+    });
+    console.log(this.arr);
+
   },
 
   methods: {
